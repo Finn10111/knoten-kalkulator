@@ -1,0 +1,23 @@
+{{#bs-form formLayout=formLayout model=model onSubmit=saveKnot as |form|}}
+  {{form.element controlType="text" label="Name" placeholder="Name" property="name" required=true}}
+  {{form.element controlType="number" label="Breite in mm" placeholder="Breite in mm" property="width" required=true min=1}}
+  {{form.element controlType="number" label="Dicke in mm" placeholder="Dicke in mm" property="thickness" required=true min=1}}
+      {{#file-upload name="photos"
+                     accept="image/*"
+                     multiple=true
+                     onfileadd=(action "uploadImage")}}
+        <a class="upload-image" class="btn">Bild hochladen</a>
+      {{/file-upload}}
+	<img src="/static/img/{{model.image}}">
+{{#each model.cords as |cord|}}
+{{#bs-form formLayout=formLayout model=cord as |form2|}}
+  <h3>Strang</h3>
+  {{form2.element controlType="text" label="Name" placeholder="Name" property="name" required=true}}
+  {{form2.element controlType="number" label="Faktor" placeholder="Faktor" property="factor" required=true step=0.01 min=1}}
+  {{form2.element controlType="number" label="Anzahl" placeholder="Anzahl" property="quantity" required=true min=1}}
+{{/bs-form}}
+{{/each}}
+  {{bs-button defaultText="Strang hinzufügen" onClick=(action "addCord")}}
+  {{bs-button defaultText="Speichern" type="primary" buttonType="submit"}}
+{{/bs-form}}
+

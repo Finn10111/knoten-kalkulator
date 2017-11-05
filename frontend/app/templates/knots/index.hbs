@@ -1,0 +1,24 @@
+{{#if model}}
+    <div class="row">
+    {{#each model as |knot index|}}
+        <div class="col-sm-4 mb-4">
+            <div class="card">
+            {{#link-to 'knots.show' knot}}
+              <img class="card-img-top" src="/static/img/{{if knot.image knot.image 'no_image.png'}}" alt="{{knot.name}}">
+              <div class="card-body">
+                <h4 class="card-title">{{knot.name}}</h4>
+              </div>
+            {{/link-to}}
+            </div>
+        </div>
+    {{/each}}
+    </div>
+{{else}}
+    <div class="alert alert-info" role="alert">
+        Noch keine Knoten eingetragen
+    </div>
+{{/if}}
+
+{{#link-to 'knots.create' class="btn btn-primary"}}Knoten hinzufügen{{/link-to}}
+
+{{outlet}}
