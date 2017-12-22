@@ -70,3 +70,4 @@ pip-selfcheck.json
 # custom
 config.py
 static/img/
+share/
