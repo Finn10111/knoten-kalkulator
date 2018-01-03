@@ -1,7 +1,5 @@
-<form {{action 'authenticate' on='submit'}}>
-  <label for="identification">Login</label>
-  {{input id='identification' placeholder='Enter Login' value=identification}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-  <button type="submit">Login</button>
-</form>
+{{#bs-form formLayout=formLayout model=this onSubmit=(action "authenticate") as |form|}}
+  {{form.element controlType="text" label="Benutzername" placeholder="Benutzername" property="identification" required=true}}
+  {{form.element controlType="password" label="Passwort" placeholder="Passwort" property="password" required=true}}
+  {{bs-button defaultText="Login" type="primary" buttonType="submit"}}
+{{/bs-form}}
