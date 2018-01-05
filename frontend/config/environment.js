@@ -54,7 +54,7 @@ module.exports = function(environment) {
     refreshAccessTokens: true,
     serverTokenRefreshEndpoint: '/api/refresh',
     refreshLeeway: 300, // Refresh the token 5 minutes (300s) before it expires.
-    headers: {'Content-Type': 'application/json', 'Host': 'dev.local'},
+    headers: {'Content-Type': 'application/json'},
     tokenPropertyName: 'access_token',
     refreshTokenPropertyName: 'refresh_token',
   };
