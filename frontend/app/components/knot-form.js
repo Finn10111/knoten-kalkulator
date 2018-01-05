@@ -37,7 +37,11 @@ export default Ember.Component.extend({
   actions: {
     addCord() {
         let knot = this.get('model');
+		if ( !knot.get('cords') ) {
+			knot.set('cords', []);
+		}
 		let store = this.get('store');
+		let cords = knot.get('cords');
         knot.get('cords').pushObject(store.createRecord('cord'));
     },
     uploadImage(file) {
