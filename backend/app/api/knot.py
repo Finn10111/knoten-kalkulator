@@ -1,5 +1,6 @@
 from flask import jsonify, request
 
+import os
 from . import api
 from .. import io
 from .. import db
@@ -41,6 +42,10 @@ def update_knot(id, new_knot):
 
     if not knot:
         return io.not_found('Knot not found: ' + str(id))
+
+    if knot.image and knot.image != new_knot.image:
+        # delete old image
+        os.remove(os.path.join(os.path.dirname(os.path.realpath(__file__))+'/../../static/img', knot.image))
 
     knot.name = new_knot.name
     knot.image = new_knot.image
