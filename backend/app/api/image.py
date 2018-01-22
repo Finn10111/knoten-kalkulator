@@ -21,7 +21,7 @@ def image_upload():
     if file and allowed_file(file.filename):
         #filename = secure_filename(file.filename)
         filename = str(uuid.uuid4()) + '.' + file.filename.rsplit('.', 1)[1].lower()
-        file.save(os.path.join('/var/www/vhosts/dev.local/foobar-backend/static/img', filename))
+        file.save(os.path.join(os.path.dirname(os.path.realpath(__file__))+'/../../static/img', filename))
         return ({'filename': filename})
     return jsonify(False)
 
