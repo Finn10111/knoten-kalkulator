@@ -6,16 +6,22 @@
                      accept="image/*"
                      multiple=true
                      onfileadd=(action "uploadImage")}}
-        <a class="upload-image" class="btn">Bild hochladen</a>
+        <a class="upload-image" class="btn btn-success sm">Bild hochladen</a>
       {{/file-upload}}
-	<img src="/static/img/{{model.image}}">
+	<div class="row">
+	<img src="/static/img/{{if model.image model.image 'no_image.png'}}">
+		<form>
+			<div class="form-group">
+			</div>
+		</form>
+	</div>
 {{#each model.cords as |cord|}}
 {{#bs-form formLayout=formLayout model=cord as |cordForm|}}
   <h3>Strang</h3>
   {{cordForm.element controlType="text" label="Name" placeholder="Name" property="name" required=true}}
   {{cordForm.element controlType="number" label="Faktor" placeholder="Faktor" property="factor" required=true step=0.01 min=1}}
   {{cordForm.element controlType="number" label="Anzahl" placeholder="Anzahl" property="quantity" required=true min=1}}
-  {{bs-button defaultText="Strang löschen" onClick=(action "removeCord" cord)}}
+  {{#bs-button size="sm" type="danger" onClick=(action "removeCord" cord)}}Strang löschen{{/bs-button}}
 {{/bs-form}}
 {{/each}}
   {{bs-button defaultText="Strang hinzufügen" onClick=(action "addCord")}}
