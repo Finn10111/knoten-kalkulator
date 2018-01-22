@@ -8,11 +8,19 @@ from ..models.knot import Knot
 from ..schemas.knot import knot_schema, knots_schema
 from flask_login import login_required
 from flask_jwt_extended import jwt_required
+from flask_io import fields
+from sqlalchemy_utils.functions import sort_query
 
 @api.route('/knots', methods=['GET'])
+@io.from_query('order_by', fields.String(missing='name'))
 @io.marshal_with(knots_schema)
-def get_knots():
-    knots = Knot.query.all()
+def get_knots(order_by):
+    query = Knot.query
+
+    if order_by:
+        query = sort_query(query, order_by)
+
+    knots = query.all()
     return knots
 
 
