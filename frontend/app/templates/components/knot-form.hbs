@@ -10,11 +10,12 @@
       {{/file-upload}}
 	<img src="/static/img/{{model.image}}">
 {{#each model.cords as |cord|}}
-{{#bs-form formLayout=formLayout model=cord as |form2|}}
+{{#bs-form formLayout=formLayout model=cord as |cordForm|}}
   <h3>Strang</h3>
-  {{form2.element controlType="text" label="Name" placeholder="Name" property="name" required=true}}
-  {{form2.element controlType="number" label="Faktor" placeholder="Faktor" property="factor" required=true step=0.01 min=1}}
-  {{form2.element controlType="number" label="Anzahl" placeholder="Anzahl" property="quantity" required=true min=1}}
+  {{cordForm.element controlType="text" label="Name" placeholder="Name" property="name" required=true}}
+  {{cordForm.element controlType="number" label="Faktor" placeholder="Faktor" property="factor" required=true step=0.01 min=1}}
+  {{cordForm.element controlType="number" label="Anzahl" placeholder="Anzahl" property="quantity" required=true min=1}}
+  {{bs-button defaultText="Strang löschen" onClick=(action "removeCord" cord)}}
 {{/bs-form}}
 {{/each}}
   {{bs-button defaultText="Strang hinzufügen" onClick=(action "addCord")}}

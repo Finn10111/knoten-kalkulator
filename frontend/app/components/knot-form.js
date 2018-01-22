@@ -36,16 +36,21 @@ export default Ember.Component.extend({
   }).maxConcurrency(3).enqueue(),
   actions: {
     addCord() {
-        let knot = this.get('model');
-		if ( !knot.get('cords') ) {
-			knot.set('cords', []);
-		}
-		let store = this.get('store');
-		let cords = knot.get('cords');
-        knot.get('cords').pushObject(store.createRecord('cord'));
+      let knot = this.get('model');
+      if ( !knot.get('cords') ) {
+        knot.set('cords', []);
+      }
+      let store = this.get('store');
+      let cords = knot.get('cords');
+      knot.get('cords').pushObject(store.createRecord('cord'));
     },
     uploadImage(file) {
       get(this, 'uploadImage').perform(file);
-    }
+    },
+	removeCord(cord) {
+      console.log("removeCord");
+	  console.log(cord);
+	  cord.deleteRecord();
+	}
   }
 });
