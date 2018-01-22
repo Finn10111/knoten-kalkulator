@@ -47,6 +47,11 @@ def update_knot(id, new_knot):
         # delete old image
         os.remove(os.path.join(os.path.dirname(os.path.realpath(__file__))+'/../../static/img', knot.image))
 
+    # delete old/unsued cords if there are any
+    for cord in knot.cords:
+        if not cord in new_knot.cords:
+            db.session.delete(cord)
+
     knot.name = new_knot.name
     knot.image = new_knot.image
     knot.width = new_knot.width
