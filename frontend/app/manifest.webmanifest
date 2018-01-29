@@ -1,0 +1,8 @@
+{
+  "name": "Knoten-Kalkulator",
+  "description": "Längenberechnung für Paracord-Knoten",
+  "icons": [{
+    "src": "img/icon.png",
+    "sizes": "512x512"
+  }]
+}
