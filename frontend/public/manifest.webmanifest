@@ -1,8 +1,16 @@
 {
   "name": "Knoten-Kalkulator",
-  "description": "Längenberechnung für Paracord-Knoten",
+  "short_name": "Knoten-Kalkulator",
+  "start_url": "https://kk.pimux.de",
+  "description": "Laengenberechnung fuer Paracord-Knoten",
   "icons": [{
-    "src": "img/icon.png",
-    "sizes": "512x512"
-  }]
+    "src": "img/icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }, {
+    "src": "img/icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+  ]
 }
