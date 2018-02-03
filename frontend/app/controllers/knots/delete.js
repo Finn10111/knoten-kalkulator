@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
       knot.destroyRecord().then(function() {
         self.transitionToRoute('knots');
       }).catch(function(reason) {
+        alert(reason);
       });
     }
   }

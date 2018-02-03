@@ -24,11 +24,11 @@ export default Ember.Component.extend({
 
       let response = yield file.upload('/api/images/upload');
       set(image, 'name', response.body.filename);
-	  var model = this.get('model');
-	  model.set('image', response.body.filename)
-      //yield image.save();
+      var model = this.get('model');
+      model.set('image', response.body.filename)
+        //yield image.save();
     } catch (e) {
-      //image.rollback();
+        //image.rollback();
     }
   }).maxConcurrency(3).enqueue(),
   actions: {
@@ -38,14 +38,13 @@ export default Ember.Component.extend({
         knot.set('cords', []);
       }
       let store = this.get('store');
-      let cords = knot.get('cords');
       knot.get('cords').pushObject(store.createRecord('cord'));
     },
     uploadImage(file) {
       get(this, 'uploadImage').perform(file);
     },
-	removeCord(cord) {
-	  cord.deleteRecord();
-	}
+    removeCord(cord) {
+      cord.deleteRecord();
+    }
   }
 });

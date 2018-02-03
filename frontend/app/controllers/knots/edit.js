@@ -11,8 +11,9 @@ export default Ember.Controller.extend({
       var knot = this.get('model');
       var self = this;
       knot.save().then(function() {
-		self.transitionToRoute('knots');
+        self.transitionToRoute('knots');
       }).catch(function(reason) {
+        alert(reason);
       });
     },
   }
