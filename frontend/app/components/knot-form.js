@@ -23,14 +23,11 @@ export default Ember.Component.extend({
       });
 
       let response = yield file.upload('/api/images/upload');
-	  console.log(response);
       set(image, 'name', response.body.filename);
 	  var model = this.get('model');
 	  model.set('image', response.body.filename)
       //yield image.save();
     } catch (e) {
-	  console.log('upload error');
-	  console.log(e);
       //image.rollback();
     }
   }).maxConcurrency(3).enqueue(),
@@ -48,8 +45,6 @@ export default Ember.Component.extend({
       get(this, 'uploadImage').perform(file);
     },
 	removeCord(cord) {
-      console.log("removeCord");
-	  console.log(cord);
 	  cord.deleteRecord();
 	}
   }

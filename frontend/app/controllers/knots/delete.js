@@ -6,14 +6,11 @@ export default Ember.Controller.extend({
   },
   actions: {
     deleteKnot() {
-      console.log("deleteKnot()");
       var knot = this.get('model');
       var self = this;
       knot.destroyRecord().then(function() {
-        console.log("jo");
         self.transitionToRoute('knots');
       }).catch(function(reason) {
-        console.log("ne");
       });
     }
   }
