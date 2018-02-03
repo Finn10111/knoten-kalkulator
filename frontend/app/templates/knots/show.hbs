@@ -1,31 +1,40 @@
 <h1>{{model.name}}</h1>
 
 <div class="row">
-<img src="/static/img/{{if model.image model.image 'no_image.png'}}">
-    <form>
-        <div class="form-group">
-        </div>
-    </form>
+  <img src="/static/img/{{if model.image model.image 'no_image.png'}}">
+  <form>
+    <div class="form-group">
+    </div>
+  </form>
 </div>
 <div class="row results">
-<div class="col-sm-12">
-<ul class="list-group">
-    <li class="list-group-item">
-        <div class="input-group">
-          <span class="input-group-addon">Benötigte Längen für</span>
+  <div class="col-sm-12">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="form-group">
+          <label>Länge oder Halsumfang in cm</label>
           {{input type="number" change=(action "calcLength") class="form-control form-control-lg" placeholder="" value=model.length min=1}}
-          <span class="input-group-addon">cm</span>
         </div>
-    </li>
-{{#each model.cords as |cord|}}
-    {{knot-cord cord=cord}}
-{{/each}}
-</ul>
-</div>
+        <div class="form-group">
+          <div class="form-check">
+            <input type="checkbox" checked={{model.isRound}} onchange={{action "toggleIsRound" value="target.checked"}} />
+            <label class="form-check-label">
+              Als Halsband
+            </label>
+            {{#if model.isRound}}
+              <p>Bei einem Halsband wird dann eine Länge von {{format-length model.realNeededLength}} benötigt</p>
+            {{/if}}
+          </div>
+        </div>
+      </li>
+      {{#each model.cords as |cord|}}
+        {{knot-cord cord=cord}}
+      {{/each}}
+    </ul>
+  </div>
 </div>
 
 <div class="row">
-{{#link-to 'knots.edit' model class="btn btn-primary mx-auto my-2"}}Bearbeiten{{/link-to}}
-{{#link-to 'knots.delete' model class="btn btn-danger mx-auto my-2"}}Löschen {{/link-to}}
+  {{#link-to 'knots.edit' model class="btn btn-primary mx-auto my-2"}}Bearbeiten{{/link-to}}
+  {{#link-to 'knots.delete' model class="btn btn-danger mx-auto my-2"}}Löschen {{/link-to}}
 </div>
-
