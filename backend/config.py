@@ -8,6 +8,10 @@ class Config(object):
     DEBUG = True
     TESTING = False
 
+    @staticmethod
+    def init_app(app):
+        pass
+
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get(
@@ -33,6 +37,6 @@ config = {
     'production': ProductionConfig,
     'development': DevelopmentConfig,
     'testing': TestingConfig,
-    'default': ProductionConfig,
+    'default': DevelopmentConfig,
     'SECRET_KEY': 'test'
 }
