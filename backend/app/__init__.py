@@ -6,7 +6,6 @@ from flask_io import FlaskIO
 from flask_jwt_extended import JWTManager
 from werkzeug.utils import secure_filename
 
-from config import config
 
 db = SQLAlchemy()
 ma = Marshmallow()
@@ -18,8 +17,10 @@ UPLOAD_FOLDER = '/tmp'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 def create_app(config_name):
+    from config import config
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
