@@ -1,5 +1,5 @@
 click==6.7
-Flask==0.12.2
+Flask==0.12.4
 flask-io==1.12.0
 Flask-JWT-Extended==2.4.1
 Flask-Login==0.4.0
