@@ -19,7 +19,7 @@ from flask_jwt_extended.exceptions import NoAuthorizationError, WrongTokenError
 from flask_jwt_extended.config import *
 from flask_jwt_extended.tokens import decode_jwt
 from flask_jwt_extended.view_decorators import _load_user
-from flask_jwt_extended.blacklist import check_if_token_revoked
+#from flask_jwt_extended.blacklist import check_if_token_revoked
 try:
     from flask import _app_ctx_stack as ctx_stack
 except ImportError:  # pragma: no cover
@@ -45,8 +45,8 @@ def jwt_esat_refresh_token_required(fn):
             raise WrongTokenError('Only refresh tokens can access this endpoint')
 
         # If blacklisting is enabled, see if this token has been revoked
-        if config.blacklist_enabled:
-            check_if_token_revoked(decoded_token)
+        #if config.blacklist_enabled:
+            #check_if_token_revoked(decoded_token)
 
         ctx_stack.top.jwt = decoded_token
         _load_user(decoded_token['identity'])
