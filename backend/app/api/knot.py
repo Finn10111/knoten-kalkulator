@@ -1,12 +1,9 @@
-from flask import jsonify, request
-
 import os
 from . import api
 from .. import io
 from .. import db
 from ..models.knot import Knot
 from ..schemas.knot import knot_schema, knots_schema
-from flask_login import login_required
 from flask_jwt_extended import jwt_required
 from flask_io import fields
 from sqlalchemy_utils.functions import sort_query
