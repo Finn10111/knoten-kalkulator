@@ -28,7 +28,9 @@
         </div>
       </li>
       {{#each model.cords as |cord|}}
-        {{knot-cord cord=cord}}
+        {{#unless cord.isNew}}
+            {{knot-cord cord=cord}}
+        {{/unless}}
       {{/each}}
     </ul>
   </div>
