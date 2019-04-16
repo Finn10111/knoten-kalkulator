@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 
-export default Ember.Component.extend({
-  isVisible: Ember.computed('cord.result', function() {
+export default Component.extend({
+  isVisible: computed('cord.result', function() {
     return this.get('cord.result') > 0;
   }),
 });

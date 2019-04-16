@@ -1,10 +1,9 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   model() {
     return this.store.createRecord('knot');
   },
-  store: Ember.inject.service(),
 
   actions: {
     updateKnot() {

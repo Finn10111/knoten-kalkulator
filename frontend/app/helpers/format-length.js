@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 export function formatLength(params/*, hash*/) {
   if ( params >= 100 ) {
@@ -8,4 +8,4 @@ export function formatLength(params/*, hash*/) {
   }
 }
 
-export default Ember.Helper.helper(formatLength);
+export default buildHelper(formatLength);

@@ -1,13 +1,14 @@
-import Ember from 'ember';
 import { task } from 'ember-concurrency';
+import Component from '@ember/component';
+import { inject } from '@ember/service';
+import { get } from '@ember/object';
+import { set } from '@ember/object';
 
-const { get, set } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   model() {
     return this.store.createRecord('knot');
   },
-  store: Ember.inject.service(),
+  store: inject(),
 
   uploadImage: task(function * (file) {
     let image = this.get('store').createRecord('image', {
