@@ -1,5 +1,5 @@
-{{#bs-form formLayout=formLayout model=this onSubmit=(action "authenticate") as |form|}}
-  {{form.element controlType="text" label="Benutzername" placeholder="Benutzername" property="identification" required=true}}
-  {{form.element controlType="password" label="Passwort" placeholder="Passwort" property="password" required=true}}
-  {{bs-button defaultText="Login" type="primary" buttonType="submit"}}
-{{/bs-form}}
+<form {{action "authenticate" on="submit"}}>
+    {{input label="Benutzername" placeholder="Benutzername" value=identification required=true}}
+    {{input type="password" label="Passwort" placeholder="Passwort" value=password required=true}}
+    <button type="submit">Login</button>
+</form>
